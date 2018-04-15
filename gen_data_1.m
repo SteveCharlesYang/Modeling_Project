@@ -12,14 +12,14 @@ conf_stu = 20;
 conf_begin_1_len = 0.14;
 conf_begin_2_len = 0.24;
 conf_begin_bias = -0.26;
+conf_begin_offset = -0.5;
 %课程结束正态分布：
 conf_over_1_len = 0.1;
 conf_over_2_len = 0.24;
 conf_over_bias = 0.25;
+conf_over_offset = 0;
 %读取文件
 conf_file = 'class_time.csv';
 %%
 val = [];
-for day=1:5
-    val = [val;function_1(conf_initial, conf_modifier, conf_noise, conf_stu, conf_begin_1_len, conf_begin_2_len, conf_begin_bias, conf_over_1_len, conf_over_2_len, conf_over_bias, conf_file)];
-end
+val = [val;function_1(conf_begin_offset, conf_over_offset, conf_initial, conf_modifier, conf_noise, conf_stu, conf_begin_1_len, conf_begin_2_len, conf_begin_bias, conf_over_1_len, conf_over_2_len, conf_over_bias, conf_file)];
