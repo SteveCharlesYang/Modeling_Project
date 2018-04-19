@@ -15,6 +15,9 @@ function int_class = function_1(conf_begin_offset, conf_over_offset, ...
     class_stu_modifier = 2.*conf_modifier + conf_modifier * rand(1,73);
     classes_begin = classes_time(1,:).*class_stu_modifier;
     classes_over = classes_time(2,:).*-class_stu_modifier;
+    %绘制课程计划
+    figure;
+    stem(classes_over+classes_begin);
     %生成每课正态分布
     per_class_begin = [conf_stu.*normpdf(per_class_t1_begin,conf_begin_bias,conf_begin_1_len) conf_stu.*normpdf(per_class_t2_begin,conf_begin_bias,conf_begin_2_len)];
     per_class_over = [conf_stu.*normpdf(per_class_t1_over,conf_over_bias,conf_over_1_len) conf_stu.*normpdf(per_class_t2_over,conf_over_bias,conf_over_2_len)];
