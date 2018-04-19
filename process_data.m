@@ -1,27 +1,22 @@
-data = csvread('ofo_work_teachingbuilding.csv');
-data_check = csvread('class_time.csv');
-data_check1 = data_check(1,:);
-data_check2 = -data_check(2,:);
-check = data_check1 + data_check2;
-flow = diff(data);
-flow_pos = (flow>0).*flow;
-flow_neg = (flow<0).*-flow;
-t = -10:10;
-%normal = normpdf(t,0,1);
-
-normal_pos = normpdf(-1:0.1:1,0,0.2);
-normal_neg = normpdf(-1:0.1:1,0,0.2);
-arg_pos = deconvlucy(flow_pos,normal_pos);
-arg_neg = deconvlucy(flow_neg,normal_neg);
-figure;
-subplot(211);
-stem(normal_pos);
-subplot(212);
-stem(normal_neg);
-figure;
-subplot(311);
-stem(arg_pos);
-subplot(312);
-stem(arg_neg);
-subplot(313);
-stem(check);
+%% 数据处理函数
+function [arg_pos, arg_neg, check] = process_data(read_file, compare_file, length_start, length_end, bias_start, bias_end)
+    %读取文件并预处理
+    data = csvread(read_file);
+    data_check = csvread(compare_file);
+    data_check1 = data_check(1,:);
+    data_check2 = -data_check(2,:);
+    check = data_check1 + data_check2;
+    %将累计量差分成为变化率
+    flow = diff(data);
+    %将正负变化率分离
+    flow_pos = (flow>0).*flow;
+    flow_neg = (flow<0).*-flow;
+    %定义坐标轴
+    t = -10:10;
+    %规定用以参考的正态分布
+    normal_pos = normpdf(-1:0.1:1,bias_start,length_start);
+    normal_neg = normpdf(-1:0.1:1,bias_end,length_end);
+    %反卷积
+    arg_pos = deconvlucy(flow_pos,normal_pos);
+    arg_neg = deconvlucy(flow_neg,normal_neg);
+end
