@@ -20,6 +20,8 @@ conf_over_bias = 0.25;
 conf_over_offset = 0;
 %读取文件
 conf_file = 'class_time.csv';
+%写入文件
+conf_write_file = 'ofo_work_teachingbuilding.csv';
 %%
 val = [];
-val = [val;function_1(conf_begin_offset, conf_over_offset, conf_initial, conf_modifier, conf_noise, conf_stu, conf_begin_1_len, conf_begin_2_len, conf_begin_bias, conf_over_1_len, conf_over_2_len, conf_over_bias, conf_file)];
+val = [val;function_1(conf_begin_offset, conf_over_offset, conf_initial, conf_modifier, conf_noise, conf_stu, conf_begin_1_len, conf_begin_2_len, conf_begin_bias, conf_over_1_len, conf_over_2_len, conf_over_bias, conf_file, conf_write_file)];

@@ -1,0 +1,27 @@
+data = csvread('ofo_work_teachingbuilding.csv');
+data_check = csvread('class_time.csv');
+data_check1 = data_check(1,:);
+data_check2 = -data_check(2,:);
+check = data_check1 + data_check2;
+flow = diff(data);
+flow_pos = (flow>0).*flow;
+flow_neg = (flow<0).*-flow;
+t = -10:10;
+%normal = normpdf(t,0,1);
+
+normal_pos = normpdf(-1:0.1:1,0,0.2);
+normal_neg = normpdf(-1:0.1:1,0,0.2);
+arg_pos = deconvlucy(flow_pos,normal_pos);
+arg_neg = deconvlucy(flow_neg,normal_neg);
+figure;
+subplot(211);
+stem(normal_pos);
+subplot(212);
+stem(normal_neg);
+figure;
+subplot(311);
+stem(arg_pos);
+subplot(312);
+stem(arg_neg);
+subplot(313);
+stem(check);

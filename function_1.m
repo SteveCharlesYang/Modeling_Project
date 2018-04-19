@@ -2,7 +2,7 @@
 function int_class = function_1(conf_begin_offset, conf_over_offset, ...
     conf_initial, conf_modifier, conf_noise, ...
     conf_stu, conf_begin_1_len, conf_begin_2_len, conf_begin_bias, ...
-    conf_over_1_len, conf_over_2_len, conf_over_bias, conf_file)
+    conf_over_1_len, conf_over_2_len, conf_over_bias, conf_file, conf_write_file)
     t = 0:0.125:9;
     %时间轴
     per_class_t1_begin = -1:0.125:conf_begin_offset;
@@ -29,6 +29,8 @@ function int_class = function_1(conf_begin_offset, conf_over_offset, ...
     %随机背景噪音
     background = -conf_noise + 2.*conf_noise.*rand(1,89);
     total_class = total_class + background;
+    figure;
+    plot(1:89, total_class);
     %累积
     int_class = zeros(1,90);
     for i = 2:88
@@ -42,4 +44,6 @@ function int_class = function_1(conf_begin_offset, conf_over_offset, ...
     %绘制最终模型
     figure;
     plot((1:90)/5+6,int_class);grid on;
+    %保存
+    csvwrite(conf_write_file, int_class);
 end
