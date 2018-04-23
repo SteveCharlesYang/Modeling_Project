@@ -33,7 +33,7 @@ function int_class = function_1(conf_begin_offset, conf_over_offset, ...
     background = -conf_noise + 2.*conf_noise.*rand(1,89);
     total_class = total_class + background;
     figure;
-    plot(1:89, total_class);
+    plot((1:89)/5+6, total_class);
     %累积
     int_class = zeros(1,90);
     for i = 2:88
