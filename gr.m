@@ -1,3 +1,6 @@
+%% 电子科大节点回路计算
+%% Definition
+% 电子科大节点概率图
 uestc_road = [inf,inf,0.7,inf,0.3,inf,0.2;
          inf,inf,0.7,0.05,inf,0.05,0.2;
          0.03,0.6,inf,0.1,inf,0.07,0.2;
@@ -5,15 +8,11 @@ uestc_road = [inf,inf,0.7,inf,0.3,inf,0.2;
          0.2,0.3,0.3,inf,inf,0.05,0.1;
          inf,0.15,0.6,0.05,0.05,inf,0.15;
          0.1,0.3,0.4,0.1,0.05,inf,inf;];
-     a=[0,62,66,inf,inf,inf,inf;
-      62,0,inf,25,11,inf,inf;
-      66,inf,0,9,inf,inf,49;
-      inf,25,9,0,11,14,inf;
-      inf,11,inf,11,0,13,inf;
-      inf,inf,inf,14,13,0,35.8;
-      inf,inf,49,inf,inf,35.8,0;];
+%设定为有向图
 uestc_graph = digraph(uestc_road);
+%图的绘制
 plot(uestc_graph);
+%寻找所有路径
 findPath(uestc_road, 2, 3, 0)
  
 function possiablePaths = findPath(Graph, partialPath, destination, partialWeight)
