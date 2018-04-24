@@ -9,7 +9,7 @@ conf_noise = 2;
 %人员相对值
 conf_stu = 40;
 %课程开始正态分布：
-conf_begin_1_len = 0.14;
+conf_begin_1_len = 0.17;
 conf_begin_2_len = 0.24;
 conf_begin_bias = -0.26;
 conf_begin_offset = 0;

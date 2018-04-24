@@ -42,8 +42,8 @@ function int_class = function_1(conf_begin_offset, conf_over_offset, ...
     %初始值处理
     int_class = int_class + conf_initial;
     %小於0的值修正
-    small = int_class<0;
-    int_class(small) = 0;
+    %small = int_class<0;
+    %int_class(small) = 0;
     %绘制最终模型
     figure;
     plot((1:90)/5+6,int_class);grid on;

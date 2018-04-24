@@ -1,13 +1,13 @@
 %% 西门工作日
 %% Definition
 %每日初始值
-conf_initial = 200;
+conf_initial = 50;
 %不同课程随机变化范围
 conf_modifier = 0.4;
 %背景噪声
 conf_noise = 2;
 %人员相对值
-conf_stu = 40;
+conf_stu = 10;
 %课程开始正态分布：
 conf_begin_1_len = 0.14;
 conf_begin_2_len = 0.14;
